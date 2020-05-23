@@ -1,0 +1,25 @@
+.Login {
+  background-color: #fafafa;
+  display: flex;
+  flex-flow: nowrap column;
+  width: 250px;
+  height: 300px;
+  margin: 5% auto;
+  box-shadow: 0 3px 6px 1px rgba(129, 129, 129, 0.08);
+  padding: 0 30px;
+}
+
+.Email, .Password {
+  display: flex;
+  flex-flow: column-reverse nowrap;
+}
+
+#EmailInput, #PasswordInput {
+  border: hidden;
+  background-color: #efefef;
+  padding: 5px;
+  margin: 15px 5px;
+  color: #000;
+  border-radius: 0;
+  font-size: 14px;
+}

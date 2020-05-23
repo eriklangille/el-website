@@ -1,0 +1,55 @@
+p, h1 {
+  color: #3f3f3f;
+}
+
+.Backdrop {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.DisplayImage {
+  height: 180px;
+}
+
+.Title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.Date {
+  font-size: 14px;
+  margin: 10px 0 0 0;
+}
+
+.Description {
+  font-size: 12px;
+  margin: 10px 20px 20px;
+}
+
+.RHS div {
+  margin: 0 auto;
+}
+
+/* Mobile Screen */
+@media screen and (max-width: 768px) {
+  .Backdrop {
+    flex-flow: nowrap column;
+    width: 80%;
+  }
+
+  .DisplayImage { 
+    margin: 0 0 15px;
+  }
+}
+
+/* Larger than mobile screen */
+@media screen and (min-width: 768px) {
+  .Backdrop {
+    flex-flow: nowrap row;
+    width: 670px;
+    background-color: #f3f3f3;
+    box-shadow: 0 3px 6px 1px rgba(129, 129, 129, 0.08);
+  }
+}
