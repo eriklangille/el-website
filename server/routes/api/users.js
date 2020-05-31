@@ -40,7 +40,7 @@ router.post("/register", async(req, res) => {
         password = hash;
         try {
           
-          const user = await pool.query("insert into users (user_id, name, email, password, created_date) values($1, $2, $3, $4, current_timestamp) returning *", [uuidv4(), name, email, password]);
+          const user = await pool.query("insert into users (user_id, name, email, password, created_date, admin_user) values($1, $2, $3, $4, current_timestamp, false) returning *", [uuidv4(), name, email, password]);
           res.json(user.rows[0]);
         } catch (err) {
           console.error(err);

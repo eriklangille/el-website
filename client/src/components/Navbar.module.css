@@ -43,7 +43,7 @@
 }
 
 /* Larger than mobile screen */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
   .logo_img {
     margin: 22px 0 0 0;
     height: 21px;

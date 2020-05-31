@@ -13,6 +13,8 @@ module.exports = function validateRegisterInput(data) {
   //Name checks
   if (Validator.isEmpty(data.name)) {
     errors.name = "Name field is required.";
+  } else if(data.name.length > 12) {
+    errors.name = "Name field is too long";
   }
 
   //Email checks

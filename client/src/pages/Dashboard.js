@@ -1,6 +1,8 @@
 import React, {useContext} from 'react';
 import {logoutUser } from '../actions/authActions';
 import { UserContext } from '../App.js';
+import FormButton from '../components/FormButton.js';
+import ActionButton from '../components/ActionButton';
 
 const Dashboard = (props) => {
   
@@ -17,9 +19,13 @@ const Dashboard = (props) => {
     <div>
       <h1>Hello, {usr.name}</h1>
       <br />
-      <p>Dashboard page</p>
+      <p style={{'textAlign': "center"}}>Dashboard page</p>
       <br />
-      <button onClick={onLogoutClick}>Logout</button>
+      <ActionButton Link='./NewPost' ButtonText="New Post" />
+      <br />
+      <br />
+      <br />
+      <FormButton onClick={onLogoutClick}>Logout</FormButton>
     </div>
   );
 };

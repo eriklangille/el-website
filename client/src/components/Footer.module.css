@@ -1,5 +1,5 @@
 /* Larger than mobile screen */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
   .Footer {
     position: fixed;
     bottom: 0;
@@ -19,6 +19,7 @@
 
   .Footer p {
     font-size: 12px;
+    text-align: center;
     margin: 0;
     color: #C0C0C0;
   }
@@ -36,6 +37,7 @@
 
   .Footer p {
     font-size: 12px;
+    text-align: center;
     margin: 0;
     color: #C0C0C0;
   }

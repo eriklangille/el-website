@@ -11,7 +11,8 @@ module.exports = passport => {
   passport.use(
     new JwtStrategy(opts, async(jwt_payload, done) => {
       try {
-        const user = await pool.query("select * from users where user_id = $1", [jwt_payload.id]).rows[0];
+        const query = await pool.query("select * from users where user_id = $1", [jwt_payload.id]);
+        const user = query.rows[0];
         if(user) {
           return done(null, user);
         }

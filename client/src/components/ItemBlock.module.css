@@ -4,8 +4,10 @@ p, h1 {
 
 .Backdrop {
   display: flex;
+  flex-flow: nowrap column;
   justify-content: space-between;
   padding: 30px;
+  text-align: left;
 }
 
 .DisplayImage {
@@ -25,22 +27,36 @@ p, h1 {
 
 .Description {
   font-size: 12px;
-  margin: 10px 20px 20px;
+  margin: 10px 0 20px;
+  min-height: 70px;
 }
 
-.RHS div {
-  margin: 0 auto;
+.RHS {
+  margin: 0 10px 0;
+}
+
+.RHS {
+  margin: 0 0 0 20px;
+}
+
+.LinkButton {
+  display: flex;
+  justify-content: center;
 }
 
 /* Mobile Screen */
 @media screen and (max-width: 768px) {
   .Backdrop {
     flex-flow: nowrap column;
-    width: 80%;
+    width: min(80vw,300px);
+    margin: auto;
+    background-color: #f3f3f3;
+    box-shadow: 0 3px 6px 1px rgba(129, 129, 129, 0.08);
+    overflow: hidden;
   }
 
   .DisplayImage { 
-    margin: 0 0 15px;
+    margin: 0 0 15px 20px;
   }
 }
 
@@ -51,5 +67,9 @@ p, h1 {
     width: 670px;
     background-color: #f3f3f3;
     box-shadow: 0 3px 6px 1px rgba(129, 129, 129, 0.08);
+  }
+
+  .Description {
+    width: 380px;
   }
 }

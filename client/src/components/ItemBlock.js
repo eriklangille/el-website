@@ -17,12 +17,12 @@ const ItemBlock = (props) => {
           {props.Title}
         </h1>
         <p className={style.Date}>
-          {props.Date}
+          {`${props.Date}${props.published ? '' : ' • Not Published'}`}
         </p>
         <p className={style.Description}>
           {props.Description}
         </p>
-        <ActionButton ButtonText={props.ButtonText} Link={props.ButtonLink} NewWindow={props.ButtonNewWindow ? true : false} />
+        <ActionButton className={style.LinkButton} ButtonText={props.ButtonText} Link={props.ButtonLink} NewWindow={props.ButtonNewWindow ? true : false} />
       </div>
     </div>
   );

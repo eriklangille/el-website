@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import jwt_decode from 'jwt-decode'
 import setAuthToken from './utils/setAuthToken';
 import './App.css';
@@ -20,6 +20,7 @@ import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost.js';
 import Login from './pages/Login.js';
 import Dashboard from './pages/Dashboard.js';
+import NewPost from './pages/NewPost.js';
 
 export const UserContext = React.createContext({});
 
@@ -42,27 +43,25 @@ const UserContextProvider = props => {
     errorDispatch(params);
   };
 
-  //useLayoutEffect(() => {
-    if (localStorage.jwtToken && !state.isAuthenticated) {
-      // Set auth token header auth
-      const token = localStorage.jwtToken;
-      console.log("token", token);
-      setAuthToken(token);
-      //Decode token and get user info and exp
-      const decoded = jwt_decode(token);
-      //Set user and isAuthenticated
-      dispatch(setCurrentUser(decoded));
-  
-      //Check if the token is expired
-      const currentTime = Date.now() / 1000; //convert to ms.
-      if (decoded.exp < currentTime) {
-        //Logout user
-        dispatch(logoutUser());
-        //Redirect to login screen.
-        window.location.href = "./login";
-      }
+  if (localStorage.jwtToken && !state.isAuthenticated) {
+    // Set auth token header auth
+    const token = localStorage.jwtToken;
+    console.log("token", token);
+    setAuthToken(token);
+    //Decode token and get user info and exp
+    const decoded = jwt_decode(token);
+    //Set user and isAuthenticated
+    dispatch(setCurrentUser(decoded));
+
+    //Check if the token is expired
+    const currentTime = Date.now() / 1000; //convert to ms.
+    if (decoded.exp < currentTime) {
+      //Logout user
+      dispatch(logoutUser());
+      //Redirect to login screen.
+      window.location.href = "./login";
     }
- // }, []);
+  }
   
   return (
     <UserContext.Provider value={{auth: state, errors: state1, handleLogin: (userData) => loginUser(userData).then(res => dispatch(res))}}>
@@ -78,12 +77,15 @@ function App() {
       <div className='App'>
         <Router >
           <Navbar />
-          <Route path="/" exact component={Home} />
-          <Route path="/Login" exact component={Login} />
-          <PrivateRoute path="/Dashboard" exact component={Dashboard} />
-          <Route path="/Projects" exact component={Projects} />
-          <Route path="/Blog" exact component={Blog} />
-          <Route path="/Blog/:id" exact component={BlogPost} />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/Login" exact component={Login} />
+            <PrivateRoute path="/Dashboard" exact component={Dashboard} />
+            <Route path="/Projects" exact component={Projects} />
+            <Route path="/Blog" exact component={Blog} />
+            <PrivateRoute path="/Blog/New" exact component={NewPost} />
+            <Route path="/Blog/:id" exact component={BlogPost} />
+          </Switch>
           <Footer />
         </Router>
       </div>

@@ -1,0 +1,66 @@
+@value colors: '../components/Colors.module.css';
+@value white, dark-grey, light-grey, off-white from colors;
+
+.Backdrop {
+  background-color: white;
+  height: auto;
+  width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: nowrap column;
+  padding: 20px 50px 50px 50px;
+  box-shadow: 0 3px 6px 1px rgba(129, 129, 129, 0.08);
+}
+
+.FieldInput input {
+  margin: 0;
+  border: hidden;
+  background-color: #efefef;
+  padding: 10px;
+  color: #000;
+  border-radius: 0;
+  font-size: 14px;
+  outline: none;
+}
+
+.FieldInput {
+  display: flex;
+  flex-flow: nowrap column;
+  justify-content: left;
+  margin: 20px 0;
+}
+
+.FormButtons {
+  display: flex;
+  flex-flow: nowrap row;
+  justify-content: space-between;
+}
+
+.InputShortDescription {
+  min-height: 100px;
+}
+
+.InputPost {
+  min-height: 300px;
+}
+
+.LHSFormButtons button {
+  margin: 0 10px 0 0;
+}
+
+p {
+  text-align: left;
+}
+
+h1 {
+  margin: 0 0 20px 0;
+}
+
+textarea {
+  font-family: 'Roboto', sans-serif;
+  outline: none;
+  border: hidden;
+  background-color: off-white;
+  padding: 10px;
+  resize: vertical;
+}
