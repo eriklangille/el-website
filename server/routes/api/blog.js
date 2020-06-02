@@ -52,7 +52,7 @@ router.post("/newpost", async(req, res, next) => {
   })(req, res, next);
 });
 
-// @route GET api/blog
+// @route GET api/blog/postss
 // @desc Get all blog posts that are published, if admin then even show ones not published.
 // @access Public
 router.get("/posts", async(req, res, next) => {
@@ -60,7 +60,8 @@ router.get("/posts", async(req, res, next) => {
     if (err) {return next(err); }
     if (!user || !user.admin_user) {
       try {
-        const allBlogs = await pool.query("select * from blog where published = true");
+        // const allBlogs = await pool.query("select * from blog where published = true");
+        const allBlogs = await pool.query("select * from blog"); // temporary while adjusting to Next.js
         return res.json(allBlogs.rows);
       } catch (err) {
         console.error(err.message);
@@ -89,7 +90,7 @@ router.get("/post/:id", async(req, res, next) => {
       try {
         const { id } = req.params;
         const blogId = getSecondPart(id);
-        const blogPost = await pool.query("select * from blog where blog_id = $1 and published = true", [blogId]);
+        const blogPost = await pool.query("select * from blog where blog_id = $1", [blogId]); //Also modified temp
         return res.json(blogPost.rows[0]);
       } catch (err) {
         console.error(err);
