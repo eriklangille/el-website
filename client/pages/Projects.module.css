@@ -1,0 +1,13 @@
+.Gradient {
+  background: rgb(58,47,143,1);
+  background: linear-gradient(90deg, rgba(99,187,70,1) 0%, rgba(58,47,143,1) 105%);
+  height: 75px;
+}
+
+.ProjectsList {
+  margin: auto;
+}
+
+.ProjectsList>div {
+  margin: 30px auto;
+}

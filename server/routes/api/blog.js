@@ -61,7 +61,7 @@ router.get("/posts", async(req, res, next) => {
     if (!user || !user.admin_user) {
       try {
         // const allBlogs = await pool.query("select * from blog where published = true");
-        const allBlogs = await pool.query("select * from blog"); // temporary while adjusting to Next.js
+        const allBlogs = await pool.query("select * from blog where published = true order by blog_id"); // temporary while adjusting to Next.js
         return res.json(allBlogs.rows);
       } catch (err) {
         console.error(err.message);
@@ -90,7 +90,7 @@ router.get("/post/:id", async(req, res, next) => {
       try {
         const { id } = req.params;
         const blogId = getSecondPart(id);
-        const blogPost = await pool.query("select * from blog where blog_id = $1", [blogId]); //Also modified temp
+        const blogPost = await pool.query("select * from blog where blog_id = $1 and published = true", [blogId]); //Also modified temp
         return res.json(blogPost.rows[0]);
       } catch (err) {
         console.error(err);

@@ -1,0 +1,31 @@
+.ArticleBackground {
+  width: 600px;
+  padding: 30px 50px;
+  height: auto;
+  background-color: #fff;
+  margin: 0 auto;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.Article {
+  margin: 0 auto;
+}
+
+.Image {
+  width: 600px;
+}
+
+.Title {
+  font-size: 20px;
+}
+
+.Date {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.Post {
+  font-size: 14px;
+  white-space: pre-line;
+}

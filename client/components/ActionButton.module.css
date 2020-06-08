@@ -1,0 +1,35 @@
+.Button {
+  border: 1.5px solid;
+  border-radius: 5px;
+  height: 30px;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.ButtonBackground {
+  height: 0%;
+  width: auto;
+  padding: 0 15px;
+  display: inline-block;
+  background-color: #3f3f3f;
+  transition: height 100ms;
+}
+
+.Button:hover .ButtonBackground {
+  height: 100%;
+}
+
+.Button:hover .ButtonText {
+  color: #f3f3f3 !important;
+}
+
+.ButtonText {
+  font-size: 14px;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  line-height: normal;
+  /* white-space: nowrap; */
+  height: 15px;
+  margin: 7px 0 0 0;
+  transition: color 200ms;
+}

@@ -1,0 +1,7 @@
+.List {
+  margin: auto;
+}
+
+.List>div {
+  margin: 30px auto;
+}

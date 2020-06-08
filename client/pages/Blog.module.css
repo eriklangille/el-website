@@ -1,0 +1,13 @@
+.Gradient {
+  background: rgba(231,41,42,1);
+  background: linear-gradient(90deg, rgba(58,47,143,1) 0%, rgba(231,41,42,1) 105%);
+  height: 75px;
+}
+
+.BlogList {
+  margin: auto;
+}
+
+.BlogList>div {
+  margin: 30px auto;
+}

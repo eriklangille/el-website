@@ -1,0 +1,33 @@
+.Gradient {
+  height: 3px;
+  background: rgb(99,187,70);
+  background: linear-gradient(90deg, rgba(99,187,70,1) 0%, rgba(58,47,143,1) 55%, rgba(231,41,42,1) 100%);
+  background-color: #63BB46;
+}
+
+.Info {
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: space-evenly;
+}
+
+.Info div {
+  margin: 80px 20px 0;
+}
+
+/* Mobile Screen */
+@media screen and (max-width: 768px) {
+  .Info {
+    margin: 0 10% 0;
+  }
+  .Info div:first-child {
+    margin: 20px 20px 0;
+  }
+}
+
+/* Larger than mobile screen */
+@media screen and (min-width: 769px) {
+  .Info {
+    margin: 15vh 10% 0;
+  }
+}
