@@ -9,7 +9,7 @@ const ActionButton = (props) => {
   const color = props.ButtonColor || '#3f3f3f'
   
   return (
-    <div className={props.className} style={props.style} >
+    <div onClick={props.onClick} className={props.className} style={props.style} >
       <a href={props.Link} target={props.NewWindow ? "_blank" : ""} rel="noopener noreferrer">
         <div className={style.Button} style={{borderColor: color}}>
           <span className={style.ButtonBackground} style={{backgroundColor: color}}>

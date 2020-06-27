@@ -1,15 +1,15 @@
 const Validator = require("validator");
 const isEmpty = require("is-empty");
 
-module.exports = function validateNewPostInput(data) {
+module.exports = function validateUploadInput(data) {
   let errors = {};
 
   //Convert empty fields to an empty string so that we can use the validator functions.
-  data.Title = !isEmpty(data.Title) ? data.Title : "";
+  data.type = !isEmpty(data.type) ? data.type : "";
 
-  //Post checks
-  if (Validator.isEmpty(data.Post)) {
-    errors.Post = "Post field is required";
+  //Type checks
+  if (Validator.isEmpty(data.type)) {
+    errors.type = "type field is required";
   }
 
   return {

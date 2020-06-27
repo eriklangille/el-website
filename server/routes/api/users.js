@@ -18,8 +18,10 @@ const validateLoginInput = require("../../validation/login.js");
 // @access Public
 router.post("/register", async(req, res) => {
   //Form Validation
+  return res.status(403); //Disable registration api to prevent people from registering.
 
   const {errors, isValid} = validateRegisterInput(req.body);
+
 
   if(!isValid) {
     return res.status(400).json(errors);

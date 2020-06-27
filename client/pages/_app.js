@@ -4,6 +4,11 @@ import { UserContextProvider } from '../utils/UserContext.js'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
+// CSS Modules, react-datepicker-cssmodules.css
+// import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+
+import "react-datepicker/dist/react-datepicker.css";
+
 const App = ({ Component, pageProps }) => {
   return (
     <UserContextProvider>

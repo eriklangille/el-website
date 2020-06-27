@@ -7,6 +7,8 @@ const app = express();
 
 const users = require("./routes/api/users.js");
 const blog = require("./routes/api/blog.js");
+const upload = require("./routes/api/upload.js");
+const projects = require("./routes/api/projects.js");
 
 const port = 5000;
 
@@ -28,6 +30,11 @@ require("./config/passport")(passport);
 // Routes
 app.use("/api/users", users);
 app.use("/api/blog", blog);
+app.use("/api/upload", upload);
+app.use("/api/projects", projects);
+
+// Directories
+app.use("/images", express.static(__dirname + '/images'));
 
 // Start server listening on port 5000
 app.listen(port, () => {

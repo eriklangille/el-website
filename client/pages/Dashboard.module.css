@@ -1,7 +1,47 @@
-.List {
+.Content {
   margin: auto;
 }
 
 .List>div {
-  margin: 30px auto;
+  margin: 20px auto;
+}
+
+.UserContent {
+  margin: 10px 0 0 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.UserContent button {
+  margin: 12px 0 0 20px;
+}
+
+.ItemType {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.ItemType button:first-child {
+  margin: 0 10px 0 0;
+}
+
+.ActionBar {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 10px 0;
+}
+
+/* Mobile Screen */
+@media screen and (max-width: 768px) {
+  .Content {
+    width: 360px;
+  }
+}
+
+/* Larger than mobile screen */
+@media screen and (min-width: 768px) {
+  .Content {
+    width: 730px;
+  }
 }

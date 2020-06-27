@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { apiUrl } from '../utils/refLinks';
 import axios from 'axios';
 import classnames from 'classnames'
 
@@ -7,25 +8,41 @@ import AuthRoute from '../components/AuthRoute.js';
 import FormButton from '../components/FormButton.js';
 import ActionButton from '../components/ActionButton.js';
 
-const NewPost = () => {
+const NewPost = (props) => {
 
-  const [Title, setTitle] = useState("");
-  const [URL, setURL] = useState("");
+  console.log("FIELDS", props)
+
+  const [Title, setTitle] = useState(props.Title || "");
+  const [URL, setURL] = useState(props.Link || "");
   const [URLmod, setURLmod] = useState(false);
-  const [URLid, setURLid] = useState(0);
-  const [SavedURL, setSavedURL] = useState("");
+  const [URLid, setURLid] = useState(props.Id || 0);
+  const [SavedURL, setSavedURL] = useState(props.Link || "");
   const [Image, setImage] = useState(null);
-  const [ShortDescription, setShortDescription] = useState("");
-  const [Post, setPost] = useState("");
+  const [ImageLink, setImageLink] = useState(props.Image || "");
+  const [ShortDescription, setShortDescription] = useState(props.ShortDescription || "");
+  const [Post, setPost] = useState(props.Post || "");
+  const [Published, setPublished] = useState(props.Published || false);
 
   //Submitting the form with the save button.
   const onSubmit = e => {
     e.preventDefault();
     console.log("click!");
-    axios.post("http://localhost:5000/api/blog/newpost", {Title, URL, ShortDescription, Post, URLid})
+    axios.post(`${apiUrl}/api/blog/newpost`, {Title, URL, ShortDescription, Post, URLid})
     .then((res) => {
       setURLid(res.data.blog_id);
       setSavedURL(res.data.post_url);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+  }
+
+  const onPublish = e => {
+    e.preventDefault();
+    const publish = Published ? "un" : "";
+    axios.post(`${apiUrl}/api/blog/${publish}publish/.${URLid}`)
+    .then((res) => {
+      setPublished(res.data.published);
     })
     .catch(err => {
       console.error(err);
@@ -55,12 +72,25 @@ const NewPost = () => {
   //When an image is uploaded store it in state and send it to be uploaded.
   const onImageChange = e => {
     setImage(e.target.files[0]);
-    const data = new FormData();
-    data.append('file', Image);
-    axios.post("http://localhost:5000/api/upload", data, {
-      // Receive two parameter endpoint url, form data.
-    }).then(res => {
+    const data = new FormData(); 
+    data.set('type', '1'); //Blog is type 1.
+    data.append('photo', Image);
+    console.log("Image Changed!!!")
+    axios({method: 'post', url: `${apiUrl}/api/upload`, data: data, headers: {'Content-Type': 'multipart/form-data'}}).then(res => {
+      console.log("Result!!", res);
+      setImageLink(`${apiUrl}/images/${res.data.image_id}.${res.data.image_ext}`);
+      const ImageUUID = res.data.image_id;
+      axios.post(`${apiUrl}/api/blog/newpost`, {Title, URL, ShortDescription, Post, URLid, ImageUUID})
+      .then((res) => {
+        setURLid(res.data.blog_id);
+        setSavedURL(res.data.post_url);
+      })
+      .catch(err => {
+        console.error(err);
+      });
       console.log(res.statusText);
+    }).catch(err => {
+      console.error(err);
     });
   }
 
@@ -68,7 +98,7 @@ const NewPost = () => {
     <AuthRoute>
       <div className={style.Backdrop}>
         <h1 className={style.MainText}>
-          New Blog Post
+          {!props.Id ? "New Blog Post" : "Edit Blog Post"}
         </h1>
         <div>
           <form noValidate className={style.Form} onSubmit={onSubmit}>
@@ -83,6 +113,7 @@ const NewPost = () => {
             <div className={classnames(style.FieldInput, style.ImageFile)}> 
               <p>Display Image</p>
               <input className={style.InputImageFile} onChange={onImageChange} type="file" name="Image" accept="image/png, image/jpeg" />
+              {ImageLink !== "" && ImageLink !== null ? <img className={style.Image} src={ImageLink} alt={Title} /> : null}
             </div>
             <div className={classnames(style.FieldInput, style.ShortDescription)}> 
               <p>Short Description</p>
@@ -95,10 +126,10 @@ const NewPost = () => {
             <div className={style.FormButtons}>
               <div className={style.LHSFormButtons}>
                 <FormButton type="submit">Save</FormButton>
-                <ActionButton Link={URLid === 0 ? null : `/blog/${SavedURL}.${URLid}`} ButtonText="Preview" NewWindow={true}/>
+                <ActionButton Link={URLid === 0 ? null : `/blog/preview/${SavedURL}.${URLid}`} ButtonText="Preview" NewWindow={true}/>
               </div>
               <div>
-                <FormButton>Publish</FormButton>
+                <ActionButton onClick={onPublish} ButtonText={Published ? "Unpublish" : "Publish"} />
               </div>
             </div>
           </form>

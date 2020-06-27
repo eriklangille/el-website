@@ -17,7 +17,7 @@ const ItemBlock = (props) => {
           {props.Title}
         </h1>
         <p className={style.Date}>
-          {`${props.Date}${props.Published ? '' : ' • Not Published'}`}
+          {`${props.Date}`}
         </p>
         <p className={style.Description}>
           {props.Description}

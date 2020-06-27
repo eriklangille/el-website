@@ -1,5 +1,6 @@
 import axios from 'axios';
 import getStringDate from '../../utils/getStringDate.js';
+import { apiUrl } from '../../utils/refLinks'
 import { Fragment } from 'react'
 
 import style from '../Blog.module.css';
@@ -9,7 +10,7 @@ import Article from '../../components/Article';
 
 const getAllPostIds = async() => {
   let data = null;
-  await axios.get(`http://localhost:5000/api/blog/posts`)
+  await axios.get(`${apiUrl}/api/blog/posts`)
   .then(res => {
     data = res.data;
   }).catch((err) => {
@@ -29,7 +30,7 @@ const getPostData = async(id) => {
 
   console.log("getPostData", id)
 
-  await axios.get(`http://localhost:5000/api/blog/post/${id}`)
+  await axios.get(`${apiUrl}/api/blog/post/${id}`)
   .then(res => {
     data = res.data;
   }).catch((err) => {
@@ -48,7 +49,7 @@ const Post = (props) => {
   return (
     <Fragment>
       <Header Gradient={style.Gradient} Title="Blog" />
-      <Article Image={blogPostInfo.image_url} Title={blogPostInfo.title} Date={getStringDate(blogPostInfo.modified_date)} Post={blogPostInfo.post} />
+      <Article Image={`${apiUrl}/images/${blogPostInfo.image}.${blogPostInfo.image_ext}`} Title={blogPostInfo.title} Date={getStringDate(blogPostInfo.created_date)} Post={blogPostInfo.post} />
     </Fragment>
   );
 };

@@ -43,6 +43,11 @@
   min-height: 300px;
 }
 
+.LHSFormButtons {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
 .LHSFormButtons button {
   margin: 0 10px 0 0;
 }
@@ -62,4 +67,8 @@
   background-color: #f3f3f3;
   padding: 10px;
   resize: vertical;
+}
+
+.Image {
+  width: 150px;
 }

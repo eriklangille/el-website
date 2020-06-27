@@ -4,6 +4,7 @@
   height: 30px;
   display: inline-block;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .ButtonBackground {
@@ -28,7 +29,6 @@
   font-weight: bold;
   text-overflow: ellipsis;
   line-height: normal;
-  /* white-space: nowrap; */
   height: 15px;
   margin: 7px 0 0 0;
   transition: color 200ms;

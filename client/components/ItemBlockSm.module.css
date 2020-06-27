@@ -8,6 +8,10 @@
 
 .DisplayImage {
   height: 90px;
+  text-indent: 100%;
+  white-space: nowrap;
+  font-size: 0;
+  overflow: hidden;
 }
 
 .Title {

@@ -1,26 +1,55 @@
-.Button {
-  border: 1px #3f3f3f solid;
-  background-color: rgba(0,0,0,0);
-  border-radius: 5px;
-  height: 30px;
-  display: inline-block;
-  padding: 0 15px;
-  cursor: pointer;
-  outline: none;
+.Enclosure {
+  display: flex;
+  justify-content: center;
 }
 
-.Button:hover {
+.Button {
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  border: 1.5px solid;
+  border-radius: 5px;
+  height: 33px;
+  overflow: hidden;
+  padding: 0;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.Button:focus {
+  outline: red;
+}
+
+.ButtonBackground_h {
+  height: 0%;
+}
+
+.ButtonBackground_s {
+  height: 100%;
+}
+
+.ButtonBackground {
+  width: auto;
+  padding: 0 12px;
+  display: inline-block;
   background-color: #3f3f3f;
-  color: #f3f3f3;
+  transition: height 100ms;
+}
+
+.Button:hover .ButtonBackground {
+  height: 100%;
 }
 
 .Button:hover .ButtonText {
-  background-color: #3f3f3f;
-  color: #f3f3f3;
+  color: #f3f3f3 !important;
 }
 
 .ButtonText {
   font-size: 14px;
+  vertical-align: text-top;
   font-weight: bold;
-  margin: 0;
+  text-overflow: ellipsis;
+  line-height: normal;
+  height: 15px;
+  margin: 7px 0 0 0;
+  transition: color 200ms;
 }

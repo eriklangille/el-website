@@ -9,7 +9,14 @@ create Database elwebsite;
 -- Need tables for project list, blogs.
 
 -- Blog list
-create table blog(blog_id serial primary key, created_date date, modified_date date, title text, post_url text, author text, image_url text, short_desc text, post text, published boolean);
+create table blog(blog_id serial primary key, created_date date, modified_date date, title text, post_url text, author text, image uuid, short_desc text, post text, published boolean);
+
+-- Project list
+create table projects (project_id serial primary key, created_date date, modified_date date, start_date date, finish_date date, title text, image uuid, description text, published boolean, button_link text, button_text text);
+
+-- Sample project
+insert into projects (created_date, modified_date, start_date, finish_date, title, image, description, published)
+values (current_timestamp, current_timestamp, '2020-6-1', '2020-6-26', 'Personal website', '0b5f1b65-c37d-4350-b979-b62bc4eb1f7e', 'The creation of my website using React, Next.js, and Node.js.', true)
 
 -- Blog hashtags
 create table blog_hashtags(blog_tag_id serial primary key, blog_id uuid, tag_id uuid);

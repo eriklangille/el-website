@@ -17,7 +17,7 @@ const AuthRoute = (props) => {
 
   return (
     <Fragment>
-      {user.auth.isAuthenticated === true ? props.children : <div style={{'margin': 'auto', height: '100vh', padding: '40%', fontWeight: 'bold'}}>Unauthorized</div>}
+      {user.auth.isAuthenticated === true ? props.children : null}
     </Fragment>
   );
 };
