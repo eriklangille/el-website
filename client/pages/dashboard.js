@@ -2,10 +2,10 @@ import React, {useContext, useState, useEffect, Fragment} from 'react';
 import Head from 'next/head'
 import axios from 'axios'
 import isempty from 'is-empty'
-import { apiUrl, webUrl } from '../utils/refLinks'
+import { apiUrl } from '../utils/refLinks'
 import { logoutUser } from '../actions/authActions';
 import { UserContext } from '../utils/UserContext.js';
-import getStringDate from '../utils/getStringDate';
+import getStringDate, { getDateRange } from '../utils/getStringDate';
 import FormButton from '../components/FormButton.js';
 import ActionButton from '../components/ActionButton';
 import ItemBlockSm from '../components/ItemBlockSm'
@@ -101,7 +101,7 @@ const Dashboard = (props) => {
               )) : null}
               {!isempty(ItemList) && ItemType === "projects" ? ItemList.map(item => (
                 // <ItemBlockSm buttons={buttonLinks(item.blog_id,`${webUrl}/blog/${item.post_url}.${item.blog_id}`, `${webUrl}/blog/edit/${item.post_url}.${item.blog_id}`)} key={item.blog_id} Published={item.published} Image={item.image_url} Title={item.title} Date={getStringDate(item.modified_date)} ButtonNewWindow={false} />
-                <ItemBlockSm buttons={[{color: '#3A2F8F', text: 'Edit', newWindow: true, link: `/projects/edit/${item.project_id}`}, {color: '#E7292A', text: 'Delete', newWindow: true, link: ''}]} key={item.project_id} Published={item.published} Author={""} Image={`${apiUrl}/images/${item.image}.${item.image_ext}`} Title={item.title} Date={`${getStringDate(item.start_date)} to ${getStringDate(item.finish_date)}`} ButtonNewWindow={false} />
+                <ItemBlockSm buttons={[{color: '#3A2F8F', text: 'Edit', newWindow: true, link: `/projects/edit/${item.project_id}`}, {color: '#E7292A', text: 'Delete', newWindow: true, link: ''}]} key={item.project_id} Published={item.published} Author={""} Image={`${apiUrl}/images/${item.image}.${item.image_ext}`} Title={item.title} Date={`${getDateRange(item.start_date, item.finish_date)}`} ButtonNewWindow={false} />
               )) : null}
               { /*<ItemBlockSm buttons={buttons} Title="How to build a blog with no prior experience" Author="erikl" Date="July 1 2020" Published={false} Image='/img2.jpg' ButtonText="New Click"/> */}
             </div>

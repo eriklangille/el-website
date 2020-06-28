@@ -1,6 +1,7 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
+import { apiUrl } from '../utils/refLinks'
 
 import {
   GET_ERRORS,
@@ -11,7 +12,7 @@ import {
 //Login - get user token
 export const loginUser = async (userData) => {
   let result = {type: "", payload: {}};
-  await axios.post("http://localhost:5000/api/users/login", userData)
+  await axios.post(`${apiUrl}/api/users/login`, userData)
   .then(res => {
     //Save to localStorage
     const { token } = res.data;

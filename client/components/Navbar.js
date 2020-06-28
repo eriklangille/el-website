@@ -19,7 +19,7 @@ const Navbar = () => {
         <div className={style.lhs}>
           <div className={style.logo}>
             <img className={style.logo_img} src={el_logo} alt="logo" />
-            <h1>Erik Langille</h1>
+            <h1><Link href="/"><a>Erik Langille</a></Link></h1>
           </div>
           <div className={menuVisible ? style.pages : style.m_pages}>
             <div><p><Link href="/"><a>Home</a></Link></p></div>

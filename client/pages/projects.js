@@ -3,7 +3,7 @@ import axios from 'axios';
 import Head from 'next/head';
 import isempty from 'is-empty'
 import { apiUrl } from '../utils/refLinks.js'
-import getStringDate from '../utils/getStringDate'
+import { getDateRange } from '../utils/getStringDate'
 import Header from '../components/Header.js';
 import style from './Projects.module.css';
 import ItemBlock from "../components/ItemBlock.js";
@@ -23,7 +23,7 @@ const Projects = (props) => {
       <div className={style.ProjectsList}>
         {/* <ItemBlock Image={img1} Title="Pomodoro Task Management" Date="January to April 2020" ButtonText="GitHub" ButtonLink="https://github.com/eriklangille/pomodoro" ButtonNewWindow={true} Description="The knowledge I acquire goes in hand with the creations I build. Creating is important to my wellbeing. Growing up, I began creating with sand in a sandbox, but the constant uncleanliness of the dirt convinced me to move to digital sandboxes." /> */}
         {!isempty(Projects) && Projects.map !== undefined ? Projects.map(Project => (
-          <ItemBlock key={Project.project_id} Published={Project.published} Image={`${apiUrl}/images/${Project.image}.${Project.image_ext}`} Title={Project.title} Date={`${getStringDate(Project.start_date)} to ${getStringDate(Project.finish_date)}`} ButtonText={Project.button_text} ButtonLink={Project.button_link} ButtonNewWindow={true} Description={Project.description} />
+          <ItemBlock key={Project.project_id} Published={Project.published} Image={`${apiUrl}/images/${Project.image}.${Project.image_ext}`} Title={Project.title} Date={`${getDateRange(Project.start_date, Project.finish_date)}`} ButtonText={Project.button_text} ButtonLink={Project.button_link} ButtonNewWindow={true} Description={Project.description} />
         )) : null}
       </div>
     </Fragment>

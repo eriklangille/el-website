@@ -21,7 +21,7 @@ const Blog = (props) => {
       <Header Gradient={style.Gradient} Title="Blog" />
       <div className={style.BlogList}>
         {!isempty(blogPosts) && blogPosts.map !== undefined ? blogPosts.map(blogPost => (
-          <ItemBlock key={blogPost.blog_id} Published={blogPost.published} Image={`${apiUrl}/images/${blogPost.image}.${blogPost.image_ext}`} Title={blogPost.title} Date={getStringDate(blogPost.created_date)} ButtonText="Read More" ButtonLink={"http://localhost:3000/blog/"+blogPost.post_url+"."+blogPost.blog_id} ButtonNewWindow={false} Description={blogPost.short_desc} />
+          <ItemBlock key={blogPost.blog_id} Published={blogPost.published} Image={`${apiUrl}/images/${blogPost.image}.${blogPost.image_ext}`} Title={blogPost.title} Date={getStringDate(blogPost.created_date)} ButtonText="Read More" ButtonLink={"/blog/"+blogPost.post_url+"."+blogPost.blog_id} ButtonNewWindow={false} Description={blogPost.short_desc} />
         )) : null}
       </div>
     </Fragment>
