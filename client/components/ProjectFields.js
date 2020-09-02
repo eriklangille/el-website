@@ -87,7 +87,7 @@ const ProjectFields = (props) => {
           <form noValidate className={style.Form} onSubmit={onSubmit}>
             <div className={classnames(style.FieldInput, style.Title)}> 
               <p>Title</p>  
-              <input className={style.InputTitle} onChange={(e) => setTitle(e)} value={Title} placeholder="Project Title" type="text" />
+              <input className={style.InputTitle} onChange={(e) => setTitle(e.target.value)} value={Title} placeholder="Project Title" type="text" />
             </div>
             <div className={classnames(style.FieldInput, style.StartDate)}> 
               <p>Start Date</p>
