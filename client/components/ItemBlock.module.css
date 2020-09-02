@@ -8,6 +8,7 @@
   justify-content: space-between;
   padding: 30px;
   text-align: left;
+  overflow: hidden;
 }
 
 .DisplayImage {
@@ -70,6 +71,6 @@
   }
 
   .Description {
-    width: 380px;
+    width: 360px;
   }
 }
