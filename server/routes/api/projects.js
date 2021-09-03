@@ -66,7 +66,7 @@ router.get("/", async(req, res, next) => {
     if (!user || !user.admin_user) {
       try {
         // const allBlogs = await pool.query("select * from blog where published = true");
-        const allProjects = await pool.query("select projects.*, image_list.image_ext from projects left join image_list on projects.image = image_list.image_id where published = true order by project_id"); // temporary while adjusting to Next.js
+        const allProjects = await pool.query("select projects.*, image_list.image_ext from projects left join image_list on projects.image = image_list.image_id where published = true order by start_date desc"); // temporary while adjusting to Next.js
         return res.json(allProjects.rows);
       } catch (err) {
         console.error(err.message);
@@ -74,13 +74,27 @@ router.get("/", async(req, res, next) => {
       }
     }
     try {
-      const allProjects = await pool.query("select projects.*, image_list.image_ext from projects left join image_list on projects.image = image_list.image_id");
+      const allProjects = await pool.query("select projects.*, image_list.image_ext from projects left join image_list on projects.image = image_list.image_id order by start_date desc");
       return res.json(allProjects.rows);
     } catch (err) {
       console.error(err.message);
       return res.json(err.message);
     }
   })(req, res, next);
+});
+
+// @route GET api/projects/recent
+// @desc Get the most recent project
+// @access Public
+router.get("/recent", async(req, res, next) => {
+  if (err) {return next(err); }
+  try {
+    const allProjects = await pool.query("select projects.*, image_list.image_ext from projects left join image_list on projects.image = image_list.image_id where published = true order by start_date desc limit 1"); // temporary while adjusting to Next.js
+    return res.json(allProjects.rows);
+  } catch (err) {
+    console.error(err.message);
+    return res.json(err.message);
+  }
 });
 
 // @route GET api/projects/:id

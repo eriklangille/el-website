@@ -70,7 +70,7 @@ router.get("/posts", async(req, res, next) => {
     if (!user || !user.admin_user) {
       try {
         // const allBlogs = await pool.query("select * from blog where published = true");
-        const allBlogs = await pool.query("select blog.*, image_list.image_ext from blog left join image_list on blog.image = image_list.image_id where published = true order by blog_id"); // temporary while adjusting to Next.js
+        const allBlogs = await pool.query("select blog.*, image_list.image_ext from blog left join image_list on blog.image = image_list.image_id where published = true order by created_date desc"); // temporary while adjusting to Next.js
         return res.json(allBlogs.rows);
       } catch (err) {
         console.error(err.message);
@@ -85,6 +85,20 @@ router.get("/posts", async(req, res, next) => {
       return res.json(err.message);
     }
   })(req, res, next);
+});
+
+// @route GET api/projects/recent
+// @desc Get the most recent project
+// @access Public
+router.get("/recent", async(req, res, next) => {
+  if (err) {return next(err); }
+  try {
+    const allBlogs = await pool.query("select blog.*, image_list.image_ext from blog left join image_list on blog.image = image_list.image_id where published = true order by start_date desc limit 1"); // temporary while adjusting to Next.js
+    return res.json(allBlogs.rows);
+  } catch (err) {
+    console.error(err.message);
+    return res.json(err.message);
+  }
 });
 
 // @route GET api/blog/post/:id

@@ -55,10 +55,10 @@ const ProjectFields = (props) => {
   const onImageChange = e => {
     setImage(e.target.files[0]);
     const data = new FormData(); 
-    data.set('type', '1'); //Blog is type 1.
+    data.set('type', '2'); //Project is type 2.
     data.append('photo', Image);
     console.log("Image Changed!!!")
-    axios({method: 'post', url: `${apiUrl}/api/upload`, data: data, headers: {'Content-Type': 'multipart/form-data'}}).then(res => {
+    axios({method: 'post', url: `${apiUrl}/api/upload`, data: data, headers: {'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*'}}).then(res => {
       console.log("Result!!", res);
       setImageLink(`${apiUrl}/images/${res.data.image_id}.${res.data.image_ext}`);
       const ImageUUID = res.data.image_id;
