@@ -13,7 +13,7 @@ const keys = require("./config/keys.js");
 
 const port = 5000;
 
-var whitelist = ['https://eriklangille.com', keys.localIP, "http://localhost:3000/"]
+var whitelist = ['https://eriklangille.com', 'https://api.eriklangille.com', keys.localIP, "http://localhost:3000"]
 var corsOptionsDelegate = function (req, callback) {
   var corsOptions;
   if (whitelist.indexOf(req.header('Origin')) !== -1) {
@@ -28,11 +28,11 @@ app.use(cors(corsOptionsDelegate));
 app.use(express.json());
 
 app.use(
-  bodyParser.urlencoded({
+  express.urlencoded({
     extended: false
   })
 );
-app.use(bodyParser.json());
+app.use(express.json());
 
 // Passport middleware
 app.use(passport.initialize());
