@@ -47,6 +47,7 @@ app.use("/api/projects", projects);
 
 // Directories
 app.use("/images", express.static(__dirname + '/images'));
+app.use("/static", express.static(__dirname + '/static'));
 
 // Start server listening on port 5000
 app.listen(port, () => {

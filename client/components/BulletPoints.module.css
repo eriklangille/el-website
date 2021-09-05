@@ -1,0 +1,18 @@
+.BulletPoints {
+
+}
+
+.Bullet {
+  display: flex;
+  flex-flow: nowrap row;
+}
+
+.BulletText {
+  font-size: 14px;
+  margin: 0;
+}
+
+.BulletObject {
+  margin: 0 7px 0 0;
+  font-size: 14px;
+}
