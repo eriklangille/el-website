@@ -1,14 +1,18 @@
 import React from 'react';
-
 import style from './Header.module.css';
 
 const Header = (props) => {
+  const title = props.children || props.Title
+  const gradient = props.Gradient
+  const fallbackColor = props.FallbackColor
 
   return (
-    <div className={props.Gradient}>
-      <h1 className={style.Title}>
-        {props.Title}
-      </h1>
+    <div className={style.Header}>
+      <div className={style.Mid}>
+        <h2 className={style.Title} style={{backgroundImage: gradient, backgroundColor: fallbackColor}}>
+          {title}
+        </h2>
+      </div>
     </div>
   );
 };

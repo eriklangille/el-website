@@ -1,24 +1,85 @@
 import React, { Fragment } from "react";
 import Head from 'next/head';
-
-import InfoBlock from '../components/InfoBlock.js';
+import { apiUrl } from '../utils/refLinks';
+import getImageUrl from "../utils/getImageUrl";
+import axios from 'axios';
 import style from './Index.module.css';
+import RecentBlock from "../components/RecentBlock.js";
+import isempty from 'is-empty'
 
-const HomePage = () => {
+const HomePage = (props) => {
+  const Project = props.projectData
+  const Blog = props.blogData
 
-  return(
+  return (
     <Fragment>
       <Head>
         <title>Erik Langille | Homepage</title>
       </Head>
-      <div className={style.Gradient} />
       <div className={style.Info}>
-        <InfoBlock Img="/img1.JPG" Title="Learn." Description="I believe that learning is a lifelong process and teachings can come from anywhere. My passion for knowledge started off young by questioning everything. Fortunately, I was born in the era of the search engine, where any knowledge is within reach at a moment’s notice. This superpower has enabled me to educate myself on the software and hardware that is built into our world. I now continue my passion for learning as a full-time Engineering Student at the University of British Columbia." />
-        <InfoBlock Img="/img2.jpg" Title="Create." Description="The knowledge I acquire goes in hand with the creations I build. Creating is important to my wellbeing. Growing up, I began creating with sand in a sandbox, but the constant uncleanliness of the dirt convinced me to move to digital sandboxes. Recently, I have created an app to control a RC Car and an IoT toaster oven. In addition, my spare time is devoted to small projects, such as a cloud-based task app to help manage my time." />
-        <InfoBlock Img="/img3.jpg" Title="Inspire." Description="I try not to think in terms of never. I am inspired by many individuals who have faced and overcame adversity. I hope one day I can be an inspiration, whether that be through something I have created or by performing theatre on stage. I will continue to work on this one a bit everyday." />
+        <div className={style.Introduction}>
+          <span className={style.IntroSpan}>
+            <img className={style.Headshot} src="/headshot_256.jpg" alt="words"></img>
+            <p className={style.Text}><b>Hi!</b> I’m Erik — a software engineer looking for a full-time position after I graduate in April 2022.</p>
+          </span>
+        </div>
       </div>
+      <div className={style.GradientWrapper}>
+        <div className={style.Gradient}></div>
+      </div>
+      <div className={style.Main}>
+        <RecentBlock 
+        Title="Recent Project"
+        ItemText={Project.title}
+        ItemImageSrc={getImageUrl(Project.image,Project.image_ext)} 
+        ItemDetailText={Project.description}
+        ButtonLink={Project.button_link}
+        ButtonNewWindow={true}
+        ButtonText={Project.button_text}
+        Gradient="linear-gradient(90deg, rgba(99,187,70,1) 0%, rgba(123,97,255,1) 100%)" 
+        BackdropColor="#ffffff"
+        FallbackColor="rgba(99,187,70,1)"
+        />
+        <RecentBlock 
+        Title="Recent Blog Post"
+        ItemText={Blog.title}
+        ItemImageSrc={getImageUrl(Blog.image,Blog.image_ext)} 
+        ItemDetailText={Blog.short_desc}
+        ButtonLink={"/blog/"+Blog.post_url+"."+Blog.blog_id}
+        ButtonNewWindow={false}
+        ButtonText="Read more"
+        Gradient="linear-gradient(90deg, rgba(123,97,255,1) 0%, rgba(231,41,42,1) 100%)" 
+        BackdropColor="#ffffff"
+        FallbackColor="rgba(123,97,255,1)"
+        />
+      </div>
+      <div style={{height: "100px"}}></div>
     </Fragment>
   );
+};
+
+export const getServerSideProps = async (ctx) => {
+    let projectData = null;
+    let blogData = null;
+
+    const projectGet = axios.get(`${apiUrl}/api/projects/recent`)
+    .then(res => {
+      projectData = res.data
+    }).catch((err) => {
+      console.log(err);
+    });
+
+    const blogGet = axios.get(`${apiUrl}/api/blog/recent`)
+    .then(res => {
+      blogData = res.data
+    }).catch((err) => {
+      console.log(err);
+    });
+
+    await projectGet;
+    await blogGet;
+
+    return {props: {projectData: projectData[0], blogData: blogData[0]}};
 };
 
 export default HomePage;

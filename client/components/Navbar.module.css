@@ -1,13 +1,45 @@
 .Navbar {
   /* overflow: hidden; */
-  background-color: #f3f3f3;
+  background-color: rgba(255, 255, 255, 0.85);
+  position: fixed;
+  width: 100%;
   color: #3f3f3f;
   z-index: 9;
   left: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Content {
   padding: 0 min(10%,100px);
+  justify-content: space-between;
+}
+
+.Links {
   display: flex;
   flex-flow: nowrap row;
+  width: 240px;
   justify-content: space-between;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.Links p {
+  margin: 27px 0 0 0;
+  font-size: 14px;
+}
+
+.new_window a {
+  display: flex;
+  flex-flow: nowrap row;
+}
+
+.new_window img {
+    display: inline-block;
+    height: 15px;
+    margin: 29px 0 0 5px;
 }
 
 .logo {
@@ -29,7 +61,7 @@
 }
 
 .pages p {
-  font-size: 17px;
+  font-size: 14px;
 }
 
 .pages a, .m_pages a {
@@ -43,7 +75,7 @@
 }
 
 /* Larger than mobile screen */
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
   .logo_img {
     margin: 22px 0 0 0;
     height: 21px;
@@ -51,6 +83,12 @@
   
   .Navbar {
     height: 70px;
+    flex-flow: nowrap row;
+  }
+
+  .Content {
+    width: 100%;
+    display: flex;
   }
 
   .Navbar h1 {
@@ -116,6 +154,7 @@
   
   .Navbar {
     min-height: 70px;
+    flex-flow: nowrap column;
   }
 
   .Navbar h1 {
@@ -127,6 +166,10 @@
   .social {
     display: none;
     visibility: hidden;
+  }
+
+  .social_link {
+    margin: 1px 0;
   }
 
   .social_link p {
@@ -150,7 +193,7 @@
   }
 
   .pages {
-    margin: 10px 0 0 0;
+    margin: 20px 0 20px 0;
     display: flex;
     flex-flow: nowrap column;
     text-align: left;
@@ -172,8 +215,7 @@
 
   .menu_icon {
     position: absolute;
-    vertical-align: middle;
-    top: 22px;
+    top: 24px;
     right: 10%;
     display: block;
     /* margin: 16px 10px 0 0; */

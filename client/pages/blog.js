@@ -4,6 +4,7 @@ import getStringDate from '../utils/getStringDate'
 import Head from 'next/head';
 import axios from 'axios';
 import isempty from 'is-empty'
+import getImageUrl from "../utils/getImageUrl";
 
 import Header from '../components/Header.js';
 import style from './Blog.module.css';
@@ -18,10 +19,10 @@ const Blog = (props) => {
     <Head>
       <title>Erik Langille | Blog</title>
     </Head>
-      <Header Gradient={style.Gradient} Title="Blog" />
+      <Header Gradient="linear-gradient(90deg, rgba(58,47,143,1) 0%, rgba(231,41,42,1) 100%)" FallbackColor="rgba(231,41,42,1)">Blog</Header>
       <div className={style.BlogList}>
         {!isempty(blogPosts) && blogPosts.map !== undefined ? blogPosts.map(blogPost => (
-          <ItemBlock key={blogPost.blog_id} Published={blogPost.published} Image={`${apiUrl}/images/${blogPost.image}.${blogPost.image_ext}`} Title={blogPost.title} Date={getStringDate(blogPost.created_date)} ButtonText="Read More" ButtonLink={"/blog/"+blogPost.post_url+"."+blogPost.blog_id} ButtonNewWindow={false} Description={blogPost.short_desc} />
+          <ItemBlock key={blogPost.blog_id} Published={blogPost.published} Image={getImageUrl(blogPost.image, blogPost.image_ext)} Title={blogPost.title} Date={getStringDate(blogPost.created_date)} ButtonText="Read More" ButtonLink={"/blog/"+blogPost.post_url+"."+blogPost.blog_id} ButtonNewWindow={false} Description={blogPost.short_desc} />
         )) : null}
       </div>
     </Fragment>

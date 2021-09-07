@@ -1,0 +1,14 @@
+.Bullet {
+  display: flex;
+  flex-flow: nowrap row;
+}
+
+.BulletText {
+  font-size: inherit;
+  margin: 0;
+}
+
+.BulletObject {
+  margin: 0 7px 0 0;
+  font-size: inherit;
+}

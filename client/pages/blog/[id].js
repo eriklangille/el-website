@@ -1,6 +1,7 @@
 import axios from 'axios';
 import getStringDate from '../../utils/getStringDate.js';
 import { apiUrl } from '../../utils/refLinks'
+import getImageUrl from '../../utils/getImageUrl.js';
 import { Fragment } from 'react'
 
 import style from '../Blog.module.css';
@@ -48,8 +49,8 @@ const Post = (props) => {
   console.log("blogPostInfo", blogPostInfo, props);
   return (
     <Fragment>
-      <Header Gradient={style.Gradient} Title="Blog" />
-      <Article Image={`${apiUrl}/images/${blogPostInfo.image}.${blogPostInfo.image_ext}`} Title={blogPostInfo.title} Date={getStringDate(blogPostInfo.created_date)} Post={blogPostInfo.post} />
+      <Header Gradient="linear-gradient(90deg, rgba(58,47,143,1) 0%, rgba(231,41,42,1) 100%)" FallbackColor="rgba(231,41,42,1)" Title="Blog" />
+      <Article Image={getImageUrl(blogPostInfo.image, blogPostInfo.image_ext)} Title={blogPostInfo.title} Date={getStringDate(blogPostInfo.created_date)} Post={blogPostInfo.post} />
     </Fragment>
   );
 };

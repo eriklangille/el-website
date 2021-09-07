@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { useState, useEffect, useContext, Fragment } from 'react'
 import { UserContext } from '../../../utils/UserContext.js';
 import getStringDate from '../../../utils/getStringDate.js';
+import getImageUrl from '../../../utils/getImageUrl';
 
 import style from '../../Blog.module.css';
 
@@ -43,7 +44,7 @@ const Post = (props) => {
       </Head>
       <AuthRoute>
         <Header Gradient={style.Gradient} Title="Blog - Preview" />
-        <Article Image={`${apiUrl}/images/${Post.image}.${Post.image_ext}`} Title={Post.title} Date={getStringDate(Post.created_date)} Post={Post.post} />
+        <Article Image={getImageUrl(Post.image, Post.image_ext)} Title={Post.title} Date={getStringDate(Post.created_date)} Post={Post.post} />
       </AuthRoute>
       </Fragment>
   );

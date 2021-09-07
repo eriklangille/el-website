@@ -1,0 +1,61 @@
+.RecentBlock {
+  text-align: left;
+  max-width: 300px;
+}
+
+.TitleText {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  width: fit-content;
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.ItemText {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 30px 0;
+}
+
+.ItemImage {
+  width: 260px;
+  border-radius: 10px;
+}
+
+.ItemImageContainer {
+  display: flex;
+  flex-flow: nowrap row;
+  justify-content: center;
+}
+
+.ItemDetailText {
+  font-size: 14px;
+}
+
+.ItemDetailContainer {
+  margin: 45px 0 35px 0;
+  font-size: 14px;
+}
+
+/* Mobile Screen */
+@media screen and (max-width: 768px) {
+  .RecentBlock {
+    margin: 55px 0 20px 0;
+  }
+}
+
+/* Tablet Screen */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .RecentBlock {
+    margin: 30px 45px 0;
+  }
+}
+
+/* Larger than tablet screen */
+@media screen and (min-width: 1025px) {
+  .RecentBlock {
+    margin: 30px 70px 0;
+  }
+}

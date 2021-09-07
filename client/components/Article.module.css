@@ -1,6 +1,4 @@
 .ArticleBackground {
-  width: 600px;
-  padding: 30px 50px;
   height: auto;
   background-color: #fff;
   margin: 0 auto;
@@ -13,7 +11,7 @@
 }
 
 .Image {
-  width: 600px;
+  border-radius: 10px;
 }
 
 .Title {
@@ -28,4 +26,25 @@
 .Post {
   font-size: 14px;
   white-space: pre-line;
+}
+
+/* Mobile Screen */
+@media screen and (max-width: 768px) {
+  .ArticleBackground {
+    width: 300px;
+    padding: 0 0 50px 0;
+  }
+  .Image {
+    width: 280px;
+  }
+}
+
+/* Larger than mobile screen */
+@media screen and (min-width: 769px) {
+  .ArticleBackground {
+    width: 730px;
+  }
+  .Image {
+    width: 600px;
+  }
 }

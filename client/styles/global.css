@@ -3,7 +3,7 @@ body {
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #efefef;
+  background-color: #fff;
   min-height: 100vh;
   min-width: 100%;
   position: relative;
