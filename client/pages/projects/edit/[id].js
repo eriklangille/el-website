@@ -5,6 +5,7 @@ import { apiUrl } from '../../../utils/refLinks'
 import { useRouter } from 'next/router'
 import { useState, useEffect, useContext, Fragment } from 'react'
 import { UserContext } from '../../../utils/UserContext.js';
+import getImageUrl from '../../../utils/getImageUrl';
 
 import ProjectFields from '../../../components/ProjectFields'
 
@@ -43,7 +44,7 @@ const EditProject = (props) => {
       <Head>
         <title>Erik Langille | Edit Project</title>
       </Head>
-      {isempty(ProjectData) ? null : <ProjectFields Id={ProjectData.project_id} Title={ProjectData.title} ShortDescription={ProjectData.description} Published={ProjectData.published} StartDate={ProjectData.start_date} FinishDate={ProjectData.finish_date} ButtonLink={ProjectData.button_link} ButtonText={ProjectData.button_text} Image={`${apiUrl}/images/${ProjectData.image}.${ProjectData.image_ext}`} /> }
+      {isempty(ProjectData) ? null : <ProjectFields Id={ProjectData.project_id} Title={ProjectData.title} ShortDescription={ProjectData.description} Published={ProjectData.published} StartDate={ProjectData.start_date} FinishDate={ProjectData.finish_date} ButtonLink={ProjectData.button_link} ButtonText={ProjectData.button_text} Image={getImageUrl(ProjectData.image, ProjectData.image_ext)} /> }
     </Fragment>
   );
 };

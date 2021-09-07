@@ -9,10 +9,12 @@
   padding: 30px;
   text-align: left;
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .DisplayImage {
-  height: 180px;
+  width: 260px;
+  border-radius: 10px;
 }
 
 .Title {

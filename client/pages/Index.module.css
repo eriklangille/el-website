@@ -4,17 +4,13 @@
   background: rgb(99,187,70);
   background: linear-gradient(90deg, rgba(99,187,70,1) 0%, rgba(123,97,255,1) 55%, rgba(231,41,42,1) 100%);
   background-color: #63BB46;
-  margin: 0 0 0 10%;
-  position: relative;
-  top: 0px;
 }
 
 .Info {
   display: flex;
   margin: 70px 0 0 0;
-  flex-flow: wrap column;
-  justify-content: space-evenly;
-  height: 435px;
+  flex-flow: nowrap row;
+  justify-content: center;
 }
 
 .Introduction {
@@ -22,13 +18,23 @@
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
+  background-position: right center;
+  max-width: 1250px;
   width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: wrap column;
   /* padding: 0 10%; */
+}
+
+@media screen and (min-width: 1251px) {
+  .Introduction {
+    border-radius: 10px;
+  }
 }
 
 .Headshot {
   border-radius: 100%;
-  margin: 70px 0 55px;
   height: 128px;
   width: 128px;
 }
@@ -37,32 +43,69 @@
   color: #fff;
   font-size: 24px;
   text-align: left;
-  margin: 0 auto 70px;
-  width: 280px;
-  height: 112px;
-}
-
-.Main {
-  margin: 0 10%;
-}
-
-.Info div {
-  /* margin: 80px 20px 0; */
 }
 
 /* Mobile Screen */
 @media screen and (max-width: 768px) {
-  /* .Info {
-    margin: 60px 10% 0;
-  } */
-  .Info div:first-child {
-    /* margin: 80px 20px 0; */
+  .Info {
+    height: 435px;
+  }
+  .Main {
+    margin: 0 10%;
+  }
+  .Headshot {
+    margin: 70px 0 55px;
+  }
+  .Text {
+    margin: 0 auto 70px;
+    width: 280px;
+    height: 112px;
+  }
+  .GradientWrapper {
+    margin: 0 0 0 10%;
+    position: relative;
+    top: -2px;
+  }
+}
+
+/* Tablet Screen */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .Gradient {
+    margin: 90px 590px 0 0;
+  }
+}
+
+/* Larger than tablet screen */
+@media screen and (min-width: 1024px) {
+  .Gradient {
+    margin: 90px 640px 0 0;
   }
 }
 
 /* Larger than mobile screen */
 @media screen and (min-width: 769px) {
   .Info {
-    margin: 15vh 10% 0;
+    height: 350px;
+  }
+  .IntroSpan {
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: center;
+  }
+  .Text {
+    margin: 0 0 0 45px;
+    padding: 35px 0 0 0;
+    width: 500px;
+    height: 128px;
+    text-align: left;
+  }
+  .Main {
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: center;
+  }
+  .GradientWrapper {
+    display: flex;
+    justify-content: center;
   }
 }

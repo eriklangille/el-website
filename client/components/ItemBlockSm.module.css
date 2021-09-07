@@ -4,6 +4,7 @@
   justify-content: left;
   padding: 30px;
   text-align: left;
+  border-radius: 10px;
 }
 
 .DisplayImage {
@@ -12,6 +13,7 @@
   white-space: nowrap;
   font-size: 0;
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .Title {

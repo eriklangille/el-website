@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { apiUrl } from '../utils/refLinks';
+import getImageUrl from '../utils/getImageUrl';
 import axios from 'axios';
 import classnames from 'classnames'
 
@@ -78,7 +79,7 @@ const NewPost = (props) => {
     console.log("Image Changed!!!")
     axios({method: 'post', url: `${apiUrl}/api/upload`, data: data, headers: {'Content-Type': 'multipart/form-data'}}).then(res => {
       console.log("Result!!", res);
-      setImageLink(`${apiUrl}/images/${res.data.image_id}.${res.data.image_ext}`);
+      setImageLink(getImageUrl(res.image, res.image_ext));
       const ImageUUID = res.data.image_id;
       axios.post(`${apiUrl}/api/blog/newpost`, {Title, URL, ShortDescription, Post, URLid, ImageUUID})
       .then((res) => {

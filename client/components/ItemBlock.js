@@ -1,8 +1,7 @@
 import React from 'react';
 
 import style from './ItemBlock.module.css';
-
-
+import BulletPoints from './BulletPoints';
 import ActionButton from './ActionButton';
 
 const ItemBlock = (props) => {
@@ -19,9 +18,11 @@ const ItemBlock = (props) => {
         <p className={style.Date}>
           {`${props.Date}`}
         </p>
-        <p className={style.Description}>
-          {props.Description}
-        </p>
+        <div className={style.Description}>
+          <BulletPoints>
+            {props.Description}
+          </BulletPoints>
+        </div>
         <ActionButton className={style.LinkButton} ButtonText={props.ButtonText} Link={props.ButtonLink} NewWindow={props.ButtonNewWindow ? true : false} />
       </div>
     </div>

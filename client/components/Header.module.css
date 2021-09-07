@@ -1,7 +1,33 @@
 .Title {
-  color:  #efefef;
-  text-align: left;
-  margin: 0 0 0 10%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  width: fit-content;
   font-size: 30px;
-  padding: 20px 0 0 0;
+  font-weight: bold;
+  text-align: left;
+}
+
+/* Mobile Screen */
+@media screen and (max-width: 768px) {
+  .Mid {
+    width: 200px;
+    margin: 0 10%;
+  }
+  .Header {
+    margin: 100px 0 0 0;
+  }
+}
+
+/* Larger than mobile screen */
+@media screen and (min-width: 769px) {
+  .Mid {
+    width: 200px;
+    margin: 0 530px 0 0;
+  }
+  .Header {
+    margin: 70px 0 0 0;
+    display: flex;
+    justify-content: center;
+  }
 }

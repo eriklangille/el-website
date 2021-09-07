@@ -21,6 +21,11 @@
   height: 0%;
 }
 
+.a, .a:visited {
+    color: inherit;
+    display: inherit;
+}
+
 .ButtonBackground_s {
   height: 100%;
 }

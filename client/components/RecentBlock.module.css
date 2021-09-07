@@ -1,6 +1,6 @@
 .RecentBlock {
   text-align: left;
-  margin: 55px 0 20px 0;
+  max-width: 300px;
 }
 
 .TitleText {
@@ -36,4 +36,26 @@
 
 .ItemDetailContainer {
   margin: 45px 0 35px 0;
+  font-size: 14px;
+}
+
+/* Mobile Screen */
+@media screen and (max-width: 768px) {
+  .RecentBlock {
+    margin: 55px 0 20px 0;
+  }
+}
+
+/* Tablet Screen */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .RecentBlock {
+    margin: 30px 45px 0;
+  }
+}
+
+/* Larger than tablet screen */
+@media screen and (min-width: 1025px) {
+  .RecentBlock {
+    margin: 30px 70px 0;
+  }
 }

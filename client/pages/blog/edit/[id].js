@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Head from 'next/head'
 import { apiUrl } from '../../../utils/refLinks'
+import getImageUrl from '../../../utils/getImageUrl';
 import { useRouter } from 'next/router'
 import { useState, useEffect, useContext, Fragment } from 'react'
 import { UserContext } from '../../../utils/UserContext.js';
@@ -36,7 +37,7 @@ const Post = (props) => {
       <Head>
         <title>Erik Langille | Edit Article</title>
       </Head>
-      {!Post ? null : <NewPost Id={Post.blog_id} Title={Post.title} ShortDescription={Post.short_desc} Published={Post.published} Link={Post.post_url} Post={Post.post} Image={`${apiUrl}/images/${Post.image}.${Post.image_ext}`} /> }
+      {!Post ? null : <NewPost Id={Post.blog_id} Title={Post.title} ShortDescription={Post.short_desc} Published={Post.published} Link={Post.post_url} Post={Post.post} Image={getImageUrl(Post.image, Post.image_ext)} /> }
     </Fragment>
   );
 };

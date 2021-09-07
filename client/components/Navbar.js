@@ -23,7 +23,7 @@ const Navbar = () => {
           <div className={style.Links}>
             <div><p className={router.pathname == "/" ? style.active : null}><Link href="/"><a>Home</a></Link></p></div>
             <div><p className={router.pathname == "/projects" ? style.active : null}><Link href="/projects"><a>Projects</a></Link></p></div>
-            <div><p className={router.pathname == "/blog" ? style.active : null}><Link href="/blog"><a>Blog</a></Link></p></div>
+            <div><p className={router.pathname.includes("/blog") ? style.active : null}><Link href="/blog"><a>Blog</a></Link></p></div>
             <div className={style.new_window}><a href={`${apiUrl}/static/ErikLangille_Resume_Web.pdf`} target="_blank" rel="noopener noreferrer"><p>Resume</p><img src={open_gh} alt="new window" /></a></div>
           </div>
           <div className={style.lhs}>

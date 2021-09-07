@@ -87,7 +87,7 @@ router.get("/", async(req, res, next) => {
 // @desc Get the most recent project
 // @access Public
 router.get("/recent", async(req, res, next) => {
-  if (err) {return next(err); }
+  // if (err) {return next(err); }
   try {
     const allProjects = await pool.query("select projects.*, image_list.image_ext from projects left join image_list on projects.image = image_list.image_id where published = true order by start_date desc limit 1"); // temporary while adjusting to Next.js
     return res.json(allProjects.rows);
