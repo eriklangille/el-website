@@ -72,10 +72,13 @@ const NewPost = (props) => {
 
   //When an image is uploaded store it in state and send it to be uploaded.
   const onImageChange = e => {
+    if (e.target.files[0] == null) {
+      return
+    }
     setImage(e.target.files[0]);
     const data = new FormData(); 
     data.set('type', '1'); //Blog is type 1.
-    data.append('photo', Image);
+    data.append('photo', e.target.files[0]);
     console.log("Image Changed!!!")
     axios({method: 'post', url: `${apiUrl}/api/upload`, data: data, headers: {'Content-Type': 'multipart/form-data'}}).then(res => {
       console.log("Result!!", res);
