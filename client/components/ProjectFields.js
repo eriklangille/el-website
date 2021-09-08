@@ -62,7 +62,7 @@ const ProjectFields = (props) => {
     data.set('type', '2'); //Project is type 2.
     data.append('photo', e.target.files[0]);
     console.log("Image Changed!!!")
-    axios({method: 'post', url: `${apiUrl}/api/upload`, data: data, headers: {'Content-Type': 'multipart/form-data', 'Access-Control-Allow-Origin': '*'}}).then(res => {
+    axios({method: 'post', url: `${apiUrl}/api/upload`, data: data, headers: {'Content-Type': 'multipart/form-data', 'max-age': '0'}}).then(res => {
       console.log("Result!!", res);
       setImageLink(getImageUrl(res.image, res.image_ext));
       const ImageUUID = res.data.image_id;
