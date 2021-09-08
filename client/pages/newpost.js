@@ -80,7 +80,7 @@ const NewPost = (props) => {
     data.set('type', '1'); //Blog is type 1.
     data.append('photo', e.target.files[0]);
     console.log("Image Changed!!!")
-    axios({method: 'post', url: `${apiUrl}/api/upload`, data: data, headers: {'Content-Type': 'multipart/form-data'}}).then(res => {
+    axios({method: 'post', url: `${apiUrl}/api/upload`, data: data, headers: {'Content-Type': 'multipart/form-data', 'Cache-Control': 'max-age=0'}}).then(res => {
       console.log("Result!!", res);
       setImageLink(getImageUrl(res.image, res.image_ext));
       const ImageUUID = res.data.image_id;
