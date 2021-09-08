@@ -79,7 +79,10 @@ export const getServerSideProps = async (ctx) => {
     await projectGet;
     await blogGet;
 
-    return {props: {projectData: projectData[0], blogData: blogData[0]}};
+    projectData = projectData !== null ? projectData[0] : null
+    blogData = blogData !== null ? blogData[0] : null
+
+    return {props: {projectData: projectData, blogData: blogData}};
 };
 
 export default HomePage;

@@ -63,6 +63,10 @@ router.post('/', (req, res, next) => {
     return res.status(400).json(errors);
   }
 
+  if(req.file == null) {
+    return res.status(400).json({file: "File doesn't exist."});
+  }
+
   const ImageId = req.file.filename.replace(/\..*/,'');
   const ExtType = req.file.filename.match(/\..*/i)[0].substr(1);
   const TypeId = req.body.type;
