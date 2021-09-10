@@ -3,7 +3,7 @@
   font-family: 'Roboto', sans-serif;
   border: 0 solid;
   border-radius: 5px;
-  height: 32px;
+  height: 30px;
   overflow: hidden;
   padding: 2px;
   cursor: pointer;
@@ -11,6 +11,7 @@
 
 .Backdrop {
   border-radius: 4px;
+  height: 26px;
 }
 
 .Button:focus {
