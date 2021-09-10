@@ -4,7 +4,7 @@ During my third year I recognized that I wanted to revamp my website with some o
 
 Some of the tools I used to accomplish this project: React (using hooks!), Node.js, Next.js, Express, Postgresql.
 
-This project was intended to take a couple weeks but ended taking a lot longer because I did not set out clear objectives. (Blog post on this comming soon!)
+This project was intended to take a couple weeks but ended taking a lot longer because I did not set out [clear objectives](https://eriklangille.com/blog/The-Dangers-of-Feature-Creep.5).
 
 ## Features
 
