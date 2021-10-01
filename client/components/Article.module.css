@@ -14,6 +14,10 @@
   border-radius: 10px;
 }
 
+.Article img {
+  border-radius: 10px;
+}
+
 .Title {
   font-size: 20px;
 }
@@ -37,6 +41,9 @@
   .Image {
     width: 280px;
   }
+  .Article img {
+    width: 280px;
+  }
 }
 
 /* Larger than mobile screen */
@@ -45,6 +52,9 @@
     width: 730px;
   }
   .Image {
+    width: 600px;
+  }
+  .Article img {
     width: 600px;
   }
 }
