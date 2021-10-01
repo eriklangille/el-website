@@ -19,7 +19,7 @@ export const getDateRange = (firstDate, secondDate) => {
   if (date1.getFullYear() === date2.getFullYear()) {
     var options1 = {month: 'long'}
   }
-  if (date1.getMonth() === date2.getMonth) {
+  if (date1.getMonth() === date2.getMonth()) {
     return `${date2.toLocaleDateString("en-US", options2)}`
   }
   return `${date1.toLocaleDateString("en-US", options1)} to ${date2.toLocaleDateString("en-US", options2)}`
