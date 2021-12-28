@@ -20,7 +20,7 @@ const HomePage = (props) => {
         <div className={style.Introduction}>
           <span className={style.IntroSpan}>
             <img className={style.Headshot} src="/headshot_256.jpg" alt="words"></img>
-            <p className={style.Text}><b>Hi!</b> I’m Erik — a software engineer looking for a full-time position after I graduate in April 2022.</p>
+            <p className={style.Text}><b>Hi!</b> I’m Erik — a full-stack software developer graduating in April 2022.</p>
           </span>
         </div>
       </div>
