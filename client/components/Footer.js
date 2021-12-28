@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <div className={style.Footer}>
       <img src={logo_border} alt="Footer" />
-      <p>© 2021</p>
+      <p>© 2022</p>
     </div>
   );
 };
